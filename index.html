@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Certificação Email Specialist</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela 1: Boas-vindas -->
+    <div id="welcome-screen">
+        <h1>Bem-vindo, <span id="user-name"></span>!</h1>
+        <button id="subscribe-btn">Clique aqui para assinar a newsletter</button>
+        <button id="start-quiz">Iniciar Quiz</button>
+    </div>
+
+    <!-- Tela 2: Menu de opções -->
+    <div id="menu-screen">
+        <button id="start-quiz-certification">Perguntas da Prova</button>
+        <button id="start-practice">Praticar Inglês</button>
+    </div>
+
+    <!-- Tela 3: Seleção de quantidade de perguntas -->
+    <div id="question-selection-screen">
+        <button id="quiz-10">10 Perguntas</button>
+        <button id="quiz-25">25 Perguntas</button>
+        <button id="quiz-50">50 Perguntas</button>
+        <button id="quiz-100">100 Perguntas</button>
+    </div>
+
+    <!-- Tela 4: Pergunta e navegação -->
+    <div id="quiz-screen">
+        <div id="question-container"></div>
+        <div id="answer-options"></div>
+        <button id="next-btn">Próxima Pergunta</button>
+        <button id="start-over-btn">Voltar ao Início</button>
+    </div>
+
+    <!-- Tela 5: Resultado -->
+    <div id="result-screen">
+        <h2>Resultado Final</h2>
+        <p id="score"></p>
+        <button id="retry-quiz">Mais 10 Perguntas</button>
+        <button id="retry-25">Mais 25 Perguntas</button>
+        <button id="retry-50">Mais 50 Perguntas</button>
+        <button id="retry-100">Mais 100 Perguntas</button>
+        <button id="start-over-btn">Voltar ao Início</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
