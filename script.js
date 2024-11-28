@@ -25,6 +25,7 @@ fetch('https://raw.githubusercontent.com/soraiacunhab/-Is_tudo-SFMC/1f513fe81d05
     console.error("Erro ao carregar palavras:", error);
   });
 
+// Configuração dos botões de navegação
 document.getElementById("start-quiz").addEventListener("click", () => {
     showScreen("menu");
 });
@@ -33,14 +34,17 @@ document.getElementById("start-quiz-certification").addEventListener("click", ()
     showScreen("question-selection");
 });
 
+// Navegação entre telas
 function showScreen(screen) {
     document.querySelectorAll('div').forEach(div => div.style.display = 'none');
     document.getElementById(screen + '-screen').style.display = 'block';
 }
 
+// Iniciar quiz com seleção de número de perguntas
 document.getElementById("quiz-10").addEventListener("click", () => startQuiz(10));
 document.getElementById("quiz-25").addEventListener("click", () => startQuiz(25));
 
+// Função para iniciar o quiz
 function startQuiz(numQuestions) {
     currentQuestionIndex = 0;
     score = 0;
@@ -48,30 +52,42 @@ function startQuiz(numQuestions) {
     loadQuestion(numQuestions);
 }
 
+// Função para carregar perguntas
 function loadQuestion(numQuestions) {
-    const question = questions[currentQuestionIndex];
-    document.getElementById("question-container").textContent = question.question;
-    const options = document.getElementById("answer-options");
-    options.innerHTML = '';
-    question.options.forEach((option, index) => {
-        const button = document.createElement('button');
-        button.textContent = option;
-        button.addEventListener('click', () => checkAnswer(option, question.correctAnswer, numQuestions));
-        options.appendChild(button);
-    });
-}
+    if (currentQuestionIndex < questions.length) {
+        const question = questions[currentQuestionIndex];
+        document.getElementById("question-container").textContent = question.question;
 
-function checkAnswer(selectedAnswer, correctAnswer, numQuestions) {
-    if (selectedAnswer === correctAnswer) score++;
-    currentQuestionIndex++;
-    if (currentQuestionIndex < numQuestions) {
-        loadQuestion(numQuestions);
-    } else {
-        showResult();
+        const options = document.getElementById("answer-options");
+        options.innerHTML = '';
+
+        question.options.forEach((option, index) => {
+            const button = document.createElement('button');
+            button.textContent = option;
+            button.addEventListener('click', () => checkAnswer(option, question.correctAnswer, numQuestions));
+            options.appendChild(button);
+        });
     }
 }
 
-function showResult() {
-    showScreen("result");
-    document.getElementById("score").textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
+// Verificar resposta e carregar próxima pergunta
+function checkAnswer(selectedAnswer, correctAnswer, numQuestions) {
+    if (selectedAnswer === correctAnswer) score++;
+    currentQuestionIndex++;
+
+    if (currentQuestionIndex < numQuestions && currentQuestionIndex < questions.length) {
+        loadQuestion(numQuestions);
+    } else {
+        showResult(numQuestions);
+    }
 }
+
+// Exibir resultado final
+function showResult(numQuestions) {
+    showScreen("result");
+    document.getElementById("score").textContent = `Você acertou ${score} de ${numQuestions} perguntas.`;
+}
+
+// Configuração do botão de reinício
+document.getElementById("retry-quiz").addEventListener("click", () => startQuiz(10));
+document.getElementById("retry-25").addEventListener("click", () => startQuiz(25));
