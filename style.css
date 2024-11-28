@@ -1,36 +1,118 @@
-/* Alinhamento central dos botões e estilo */
+/* Aplicando um estilo global para a página */
+html, body {
+    height: 100%; /* Garantir que o body ocupe toda a altura da tela */
+    margin: 0; /* Remover margens padrão */
+    display: flex; /* Usar flexbox para centralizar */
+    justify-content: center; /* Centralizar horizontalmente */
+    align-items: center; /* Centralizar verticalmente */
+    font-family: Arial, sans-serif; /* Fonte padrão */
+    background-color: #f4f4f4; /* Cor de fundo suave */
+}
+
+/* Ajustando o estilo dos botões */
 button {
-    display: block; /* Um botão por linha */
-    width: 80%; /* Botões mais largos */
-    max-width: 300px; /* Limita a largura máxima */
-    margin: 10px auto; /* Centraliza no container */
-    padding: 12px 20px;
-    font-size: 16px;
-    color: white;
-    background-color: #5dd3f7;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
+    background-color: #5dd3f7; /* Cor de fundo do botão */
+    color: #121e55; /* Cor da fonte */
+    border: none; /* Sem borda */
+    padding: 12px 24px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Cursor em forma de mão ao passar sobre o botão */
+    border-radius: 5px; /* Bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras para dar profundidade */
+    transition: all 0.3s ease; /* Transição suave para mudanças de estado */
+    margin: 10px; /* Espaçamento entre os botões */
 }
 
 button:hover {
-    background-color: #49bce1;
-    transform: scale(1.05);
+    background-color: #4bb8d3; /* Cor de fundo ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Sombras mais intensas no hover */
 }
 
-h1, h2 {
-    text-align: center; /* Centraliza o texto */
-    color: #121e55; /* Fonte azul */
+button:focus {
+    outline: none; /* Remove o contorno padrão ao focar */
 }
 
-#welcome-screen {
-    text-align: center; /* Centraliza todos os elementos na tela inicial */
-    margin-top: 10%;
+button:active {
+    background-color: #4bb8d3; /* Cor de fundo ao clicar */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Sombras ao clicar */
 }
 
-#welcome-screen img {
-    width: 150px; /* Logo dimensionado */
-    margin-bottom: 20px;
+/* Estilos adicionais para centralizar o conteúdo da tela */
+#welcome-screen, #menu-screen, #question-selection-screen, #quiz-screen, #result-screen {
+    text-align: center; /* Centraliza o texto dentro do container */
+    display: flex; /* Flexbox para centralizar os elementos filhos */
+    flex-direction: column; /* Organiza os elementos de forma vertical */
+    justify-content: center; /* Centraliza verticalmente os itens */
+    align-items: center; /* Centraliza horizontalmente os itens */
+    width: 100%; /* Garantir que o container ocupe toda a largura */
+    max-width: 600px; /* Limita a largura máxima para telas grandes */
+    padding: 20px; /* Espaçamento interno */
+    box-sizing: border-box; /* Inclui o padding no cálculo da largura */
 }
+
+/* Ajustando o container da pergunta e opções */
+#question-container {
+    margin-bottom: 20px; /* Espaçamento abaixo da pergunta */
+    font-size: 20px; /* Tamanho maior para a pergunta */
+    color: #121e55; /* Cor da pergunta */
+}
+
+#answer-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px; /* Espaço entre a pergunta e as opções */
+}
+
+/* Ajustando a tela de resultado */
+#result-screen {
+    font-size: 18px;
+    color: #121e55;
+}
+
+/* Media queries para responsividade */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column; /* Organiza a página em uma coluna em telas menores */
+    }
+
+    button {
+        width: 100%; /* Faz com que os botões ocupem 100% da largura da tela */
+        font-size: 14px; /* Reduz o tamanho da fonte para telas pequenas */
+        padding: 10px; /* Ajusta o espaçamento dos botões */
+    }
+
+    #question-container {
+        font-size: 18px; /* Ajusta o tamanho da pergunta em telas menores */
+    }
+
+    #answer-options button {
+        width: 90%; /* Faz as opções ocuparem 90% da largura da tela */
+    }
+
+    #result-screen {
+        font-size: 16px; /* Ajusta o tamanho da fonte no resultado */
+    }
+}
+
+@media (max-width: 480px) {
+    button {
+        font-size: 12px; /* Reduz ainda mais a fonte */
+        padding: 8px; /* Reduz o tamanho do padding */
+    }
+
+    #question-container {
+        font-size: 16px; /* Ajusta o tamanho da pergunta para telas muito pequenas */
+    }
+
+    #answer-options button {
+        font-size: 14px; /* Ajusta o tamanho da fonte nas opções */
+        width: 90%; /* As opções continuam ocupando 90% da tela */
+    }
+
+    #result-screen {
+        font-size: 14px; /* Ajusta o tamanho da fonte no resultado */
+    }
+}
+
