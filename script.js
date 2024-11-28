@@ -3,12 +3,26 @@ let currentScreen = "welcome";
 let score = 0;
 let currentQuestionIndex = 0;
 let questions = [];
+let words = [];
 
-// Carregar perguntas do JSON
-fetch('questions.json')
+// Carregar perguntas do JSON (atualizado para o link Raw do GitHub)
+fetch('https://raw.githubusercontent.com/soraiacunhab/-Is_tudo-SFMC/1f513fe81d05307a911860a2e7b6dad05d1a298a/questions.json')
   .then(response => response.json())
   .then(data => {
     questions = data.questions;
+  })
+  .catch(error => {
+    console.error("Erro ao carregar perguntas:", error);
+  });
+
+// Carregar palavras do JSON (atualizado para o link Raw do GitHub)
+fetch('https://raw.githubusercontent.com/soraiacunhab/-Is_tudo-SFMC/1f513fe81d05307a911860a2e7b6dad05d1a298a/words.json')
+  .then(response => response.json())
+  .then(data => {
+    words = data.words;
+  })
+  .catch(error => {
+    console.error("Erro ao carregar palavras:", error);
   });
 
 document.getElementById("start-quiz").addEventListener("click", () => {
